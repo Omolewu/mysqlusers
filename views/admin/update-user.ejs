@@ -1,0 +1,25 @@
+<%- include('../includes/header.ejs')  %>
+</head>
+<body>
+    <h2>Update User</h2>
+    <div class="container">
+        <form action="/update-user" method="post">
+            <input type="hidden" value="<%= user[0].id %>" name="id">
+            <div>
+                <label for="name">Name</label> <br>
+             <input type="text" name="name" value="<%= user[0].name %>">
+            </div>
+            <div>
+                <label for="name">Phone</label> <br>
+             <input type="text" name="phone" value="<%= user[0].phone %>">
+            </div>
+            <div>
+                <label for="name">Image</label> <br>
+             <input type="text" name="image" value="<%= user[0].image %>">
+            </div>
+            <button type="submit">Update</button>
+        </form>
+       
+    </div>
+</body>
+</html>

@@ -1,6 +1,31 @@
 <%- include('../includes/header.ejs')  %>
 </head>
 <body>
+    <div>
+        <a href="/add-user">Add New User</a>
+    </div>
     <h2>Admin Home Page</h2>
+    <div class="container">
+        <% if(users.length >0){
+            for(let user of users){
+        %>
+        <div>
+            <div>
+                <img src="<%= user.image %>" alt="">
+            </div>
+            <div><%= user.name %></div>
+            <div><%= user.phone %></div>
+            <div>
+                <a href="/update-user/<%=user.id %>">Update</a> 
+                <form action="/delete-user" method="post">
+                    <input type="hidden" name="id" value="<%= user.id %>">
+                    <button type="submit">Delete</button>
+                </form>
+            </div>
+        </div>
+        <%  
+     }
+     } %>
+    </div>
 </body>
 </html>
