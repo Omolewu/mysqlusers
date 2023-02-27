@@ -48,5 +48,5 @@ exports.deleteUser =(req, res)=>{
         res.redirect(302, '/admin');
     }).catch(err =>{
         console.log(err);
-    })
+    }) 
 }
