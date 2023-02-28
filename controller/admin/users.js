@@ -1,5 +1,6 @@
 
 const db = require('../../database/connect');
+const Product = require('../../models/product')
 exports.addUser=(req, res)=>{
     res.render('admin/add-user')
 }
@@ -13,9 +14,9 @@ exports.postUser=(req, res)=>{
 }
 
 exports.adminHome =(req, res)=>{
-    db.execute("SELECT * from registration")
+    Product.findAll()
     .then(result=>{ 
-        res.render('admin/index', {users: result[0]});
+       res.render('admin/index', {products: result});
     }).catch(err=>{
         console.log(err)
     })

@@ -5,27 +5,36 @@
         <a href="/add-user">Add New User</a>
     </div>
     <h2>Admin Home Page</h2>
-    <div class="container">
-        <% if(users.length >0){
-            for(let user of users){
-        %>
-        <div>
-            <div>
-                <img src="<%= user.image %>" alt="">
-            </div>
-            <div><%= user.name %></div>
-            <div><%= user.phone %></div>
-            <div>
-                <a href="/update-user/<%=user.id %>">Update</a> 
-                <form action="/delete-user" method="post">
-                    <input type="hidden" name="id" value="<%= user.id %>">
-                    <button type="submit">Delete</button>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+              <th scope="col">S/N</th>
+              <th scope="col">Title</th>
+              <th scope="col">Price</th>
+              <th scope="col">Image</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+          <% if(products.length > 0) {
+            let sn=1
+            for(let product of products){
+                %>
+            <tr>
+              <th scope="row"><%= sn++ %></th>
+              <td><%= product.title %></td>
+              <td><%= product.price %></td>
+              <td><img src="<%= product.image %>" alt="<%= product.title %>"  style="width:150px"></td>
+             <td>
+                <a href="/update-product/<%= product.id %>" class="btn btn-warning">Update</a>
+                <form action="/delete-product" method="post" style="display:inline-block">
+                  <button type="submit" class="btn btn-danger">Delete</button>
                 </form>
-            </div>
-        </div>
-        <%  
-     }
-     } %>
-    </div>
-</body>
-</html>
+             </td>
+            </tr>
+      <%  }
+    }  
+    %>
+          </tbody>
+      </table>
+<%- include('../includes/footer.ejs') %> 

@@ -1,4 +1,6 @@
 const products = require('../../controller/admin/product')
 const router = require('express').Router();
- router.get('/addproduct', products.AddProduct);
-module.exports = router;
+ router.get('/add-product', products.AddProduct);
+  router.post('/add-product', products.postProduct);
+  router.get('/update-product/:id', products.updateproduct);
+  module.exports = router;
