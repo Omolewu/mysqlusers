@@ -25,3 +25,29 @@ exports.updateproduct=(req, res)=>{
    })
    .catch(err => console.log(err))
 }
+exports.productUpdate =(req, res)=>{
+   let {id, title, price, image, description} = req.body;
+   Products.findByPk(id).then(product =>{
+    product.title = title
+    product.price= price;
+    product.image=image;
+    product.description = description;
+    return product.save();
+   }).then(product =>{
+    res.redirect('/admin')
+   }).catch(err => console.log(err))
+}
+exports.deleteProduct = (req, res)=>{
+   const {id} = req.body;
+   Products.findAll({
+    where:{
+      id:id
+    }
+   }).then(products=>{
+    let product = products[0]
+   return  product.destroy()
+   })
+   .then(product=>{
+    res.redirect('/admin')
+   }).catch(err => console.log(err))
+}
