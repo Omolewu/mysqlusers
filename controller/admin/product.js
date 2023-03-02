@@ -1,16 +1,41 @@
 const Products = require('../../models/product');
+const user = require('../../models/users');
 exports.AddProduct=(req, res)=>{
   res.render('admin/add-product');
 }
 exports.postProduct = (req, res)=>{
     const {title, price, image, description} = req.body;
-    Products.create({
-        title:title,
-        price: Number.parseFloat(price),
-        image:image,
-        description:description
-    })
-    res.redirect('/admin');
+   req.user.createProduct(
+            {
+                     title:title,
+                     price: Number.parseFloat(price),
+                     image:image,
+                     description:description,
+                 }
+         )
+         res.redirect('/admin');
+    //  user.findByPk(3).then(user=>{
+   //   return user.createProduct(
+   //       {
+   //                title:title,
+   //                price: Number.parseFloat(price),
+   //                image:image,
+   //                description:description,
+   //            }
+   //    )
+
+
+   //   return  Products.create({
+   //       title:title,
+   //       price: Number.parseFloat(price),
+   //       image:image,
+   //       description:description,
+   //       userId:user.id
+   //   })
+   //  }).then(product =>{
+      
+   //  }).catch(err => console.log(err))
+   
 }
 exports.updateproduct=(req, res)=>{
    const id = req.params.id
