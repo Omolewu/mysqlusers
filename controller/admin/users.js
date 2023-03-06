@@ -22,7 +22,7 @@ exports.postUser=(req, res)=>{
 exports.adminHome =(req, res)=>{
     Product.findAll()
     .then(result=>{ 
-       res.render('admin/index', {products: result});
+       res.render('admin/index', {products: result, title:'Home'});
     }).catch(err=>{
         console.log(err)
     })

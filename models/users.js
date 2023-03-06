@@ -13,9 +13,14 @@ const user = sequelize.define('users', {
         type:Sequelize.STRING,
         unique:true
     },
-    image:{
-       type:Sequelize.STRING,
-       allowNull: false
-    }
+    email:{
+        type:Sequelize.STRING,
+        unique:true
+    },
+   password:{
+        type:Sequelize.STRING,
+        allowNull: false
+     }
+
 })
 module.exports=user

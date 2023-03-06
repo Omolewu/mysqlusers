@@ -1,7 +1,7 @@
 const Products = require('../../models/product');
 const user = require('../../models/users');
 exports.AddProduct=(req, res)=>{
-  res.render('admin/add-product');
+  res.render('admin/add-product', {title:'Add-Product'});
 }
 exports.postProduct = (req, res)=>{
     const {title, price, image, description} = req.body;
@@ -46,7 +46,7 @@ exports.updateproduct=(req, res)=>{
 //    })
  Products.findByPk(id)
    .then(result =>{
-    res.render('admin/product-update', {product: result})
+    res.render('admin/product-update', {product: result, title:'Update Product'})
    })
    .catch(err => console.log(err))
 }
